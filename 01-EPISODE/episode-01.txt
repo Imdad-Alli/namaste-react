@@ -1,0 +1,165 @@
+ <script>
+        const heading = document.createElement("h1");
+        heading.innerHTML = "Namaste React By JS";
+
+        const root = document.getElementById("root");
+        root.appendChild(heading);
+    </script>
+
+using react
+const heading = React.createElement(
+"h1",
+ {}, 
+ "Hello world By React"
+ );
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+here 
+1. React.createElement -> systax is same as js but it return React element(object) instead of html tag
+we have to pass 3 arguments i.e htmltag, {}->object, "content or inner html"
+
+2. ReactDom -> create root or space to render our react code
+3. render -> take out object i.e react element pick bowser understand html tag and render/run
+             in root space
+
+
+
+
+
+we can pass attrbute like this
+
+const heading = React.createElement(
+"h1",
+ {id:"heading", xyz:"xyz"}, 
+ "Hello world By React"
+ );
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+props-> contain attiributes + child
+
+
+
+
+creating nested react element 
+
+
+
+/*
+    <div id="parent">
+        <div id="child">
+            <h1>This is h1 tag</h1>
+        </div>
+    </div>  
+
+*/
+
+const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    React.createElement(
+        "div",
+        { id: "child" },
+         React.createElement("h1", {}, "This is h1 tag"),
+    )
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
+
+
+with siblings
+
+/*
+    <div id="parent">
+        <div id="child">
+            <h1>This is h1 tag</h1>
+            <h2>This is h2 tag</h2>
+        </div>
+    </div>  
+
+*/
+
+const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    React.createElement(
+        "div",
+        { id: "child" },
+        [
+            React.createElement("h1", {}, "This is h1 tag"),
+            React.createElement("h2", {}, "This is h2 tag")
+        ]
+    )
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
+
+
+
+
+with siblings of child
+/*
+    <div id="parent">
+        <div id="child">
+            <h1>This is h1 tag</h1>
+            <h2>This is h2 tag</h2>
+        </div>
+         <div id="child2">
+            <h1>This is h1 tag</h1>
+            <h2>This is h2 tag</h2>
+        </div>
+    </div>  
+
+*/
+
+const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    [
+        React.createElement(
+            "div",
+            { id: "child" },
+            [
+                React.createElement("h1", {}, "This is h1 tag"),
+                React.createElement("h2", {}, "This is h2 tag")
+            ]
+        ),
+        React.createElement(
+            "div",
+            { id: "child2" },
+            [
+                React.createElement("h1", {}, "This is h1 tag"),
+                React.createElement("h2", {}, "This is h2 tag")
+            ]
+        )
+    ]
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
+
+
+
+what happen when html elements are present in root
+<body>
+    
+    <div id="root">
+        <!-- <h1>This is Imdad</h1> ->it will replace react element -->
+    </div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="./App.js"></script>
+</body>
+
+element will be replaced by react element tag
+
+
+
+
+
+
